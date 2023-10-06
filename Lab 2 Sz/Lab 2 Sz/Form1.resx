@@ -117,4 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Advertencias:
+- Si no seleccionas una forma, no podrás encontrar donde escribir tus rectas 
+- Si quieres ingresar un decimal recuerda usar coma y no punto
+- No utilices paréntesis a menos que no sea en la forma y-yo=m(x-xo)
+- Ingresa todo en minusculas, no acepta mayus :'(
+</value>
+  </data>
 </root>

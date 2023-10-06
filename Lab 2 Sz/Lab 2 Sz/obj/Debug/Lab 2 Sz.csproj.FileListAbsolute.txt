@@ -8,3 +8,13 @@ C:\Users\HP\source\repos\Lab 2 Sz\Lab 2 Sz\bin\Debug\Lab 2 Sz.exe
 C:\Users\HP\source\repos\Lab 2 Sz\Lab 2 Sz\bin\Debug\Lab 2 Sz.pdb
 C:\Users\HP\source\repos\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.exe
 C:\Users\HP\source\repos\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.pdb
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\bin\Debug\Lab 2 Sz.exe.config
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\bin\Debug\Lab 2 Sz.exe
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\bin\Debug\Lab 2 Sz.pdb
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.csproj.AssemblyReference.cache
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab_2_Sz.Form1.resources
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab_2_Sz.Properties.Resources.resources
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.csproj.GenerateResource.cache
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.csproj.CoreCompileInputs.cache
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.exe
+C:\Users\HP\Documents\GitHub\Laboratorio2\Lab 2 Sz\Lab 2 Sz\obj\Debug\Lab 2 Sz.pdb

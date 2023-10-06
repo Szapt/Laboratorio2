@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Subtitulo = new System.Windows.Forms.Label();
             this.opcion = new System.Windows.Forms.ComboBox();
             this.fRecta1 = new System.Windows.Forms.TextBox();
@@ -42,10 +43,11 @@
             // Subtitulo
             // 
             this.Subtitulo.AutoSize = true;
-            this.Subtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Subtitulo.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Subtitulo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Subtitulo.Location = new System.Drawing.Point(103, 32);
             this.Subtitulo.Name = "Subtitulo";
-            this.Subtitulo.Size = new System.Drawing.Size(534, 24);
+            this.Subtitulo.Size = new System.Drawing.Size(502, 34);
             this.Subtitulo.TabIndex = 0;
             this.Subtitulo.Text = "Selecciona la forma en la que quieres escribir tus rectas";
             // 
@@ -55,8 +57,9 @@
             this.opcion.Items.AddRange(new object[] {
             "y = mx+b",
             "y-yo = m(x-xo)"});
-            this.opcion.Location = new System.Drawing.Point(304, 59);
+            this.opcion.Location = new System.Drawing.Point(293, 69);
             this.opcion.Name = "opcion";
+            this.opcion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.opcion.Size = new System.Drawing.Size(121, 21);
             this.opcion.TabIndex = 1;
             this.opcion.Text = "Ecuacion";
@@ -64,7 +67,7 @@
             // 
             // fRecta1
             // 
-            this.fRecta1.Location = new System.Drawing.Point(292, 108);
+            this.fRecta1.Location = new System.Drawing.Point(107, 110);
             this.fRecta1.Name = "fRecta1";
             this.fRecta1.Size = new System.Drawing.Size(148, 20);
             this.fRecta1.TabIndex = 2;
@@ -77,7 +80,7 @@
             // 
             // fRecta2
             // 
-            this.fRecta2.Location = new System.Drawing.Point(292, 134);
+            this.fRecta2.Location = new System.Drawing.Point(107, 136);
             this.fRecta2.Name = "fRecta2";
             this.fRecta2.Size = new System.Drawing.Size(148, 20);
             this.fRecta2.TabIndex = 3;
@@ -89,7 +92,7 @@
             // 
             // fPuntoPend1
             // 
-            this.fPuntoPend1.Location = new System.Drawing.Point(292, 160);
+            this.fPuntoPend1.Location = new System.Drawing.Point(107, 162);
             this.fPuntoPend1.Name = "fPuntoPend1";
             this.fPuntoPend1.Size = new System.Drawing.Size(148, 20);
             this.fPuntoPend1.TabIndex = 4;
@@ -100,7 +103,7 @@
             // 
             // fPuntoPend2
             // 
-            this.fPuntoPend2.Location = new System.Drawing.Point(292, 186);
+            this.fPuntoPend2.Location = new System.Drawing.Point(107, 188);
             this.fPuntoPend2.Name = "fPuntoPend2";
             this.fPuntoPend2.Size = new System.Drawing.Size(148, 20);
             this.fPuntoPend2.TabIndex = 5;
@@ -113,7 +116,7 @@
             // 
             this.btnObtener.BackColor = System.Drawing.Color.LightGray;
             this.btnObtener.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObtener.Location = new System.Drawing.Point(326, 228);
+            this.btnObtener.Location = new System.Drawing.Point(350, 124);
             this.btnObtener.Name = "btnObtener";
             this.btnObtener.Size = new System.Drawing.Size(75, 23);
             this.btnObtener.TabIndex = 6;
@@ -125,23 +128,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(261, 254);
+            this.label1.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(35, 211);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 20);
+            this.label1.Size = new System.Drawing.Size(220, 21);
             this.label1.TabIndex = 7;
-            this.label1.Text = "esperando que hagas algo...";
+            this.label1.Text = "Esperando que hagas algo...\r\n";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 137);
+            this.label2.Location = new System.Drawing.Point(36, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(303, 52);
+            this.label2.Size = new System.Drawing.Size(368, 65);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Advertencias:\r\n-Si no seleccionas una forma, no podrás encontrar \r\n- Si quieres i" +
-    "ngresar un decimal recuerda usar coma y no punto\r\n\r\n";
+            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 

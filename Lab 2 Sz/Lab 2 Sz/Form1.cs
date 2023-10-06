@@ -24,7 +24,8 @@ namespace Lab_2_Sz
         float m2=0;
         float b1 = 0;
         float b2 = 0;
-        double resulNum = -1111111111;
+        double resulNumX = -1111111111;
+        double resulNumY = -1111111111;
 
         
 
@@ -44,19 +45,28 @@ namespace Lab_2_Sz
            return intercepString;
         }
 
-        public double interseccion(float m1,float m2,float b1, float b2)
+        public double interseccionX(float m1,float m2,float b1, float b2)
         {
             return (b2-b1)/(m1-m2);
         }
+        public double interseccionY(float m1,float b1, double interseccionX)
+        {
+            return (m1 * interseccionX) + b1;
+        }
         public string convertForma(string rectaPend)
         {
+            int longitudP = rectaPend.Length; 
             int indexMp1 = rectaPend.IndexOf("=")+ 1;
             int indexXp1 = rectaPend.IndexOf("x")-2;
+            int indexXo = rectaPend.IndexOf("x") + 1;
+            int indexYo = rectaPend.IndexOf("y") + 1;
+            int indexYo1 = rectaPend.IndexOf("=") - 1;
             int distancia = indexXp1 - indexMp1;
+            int distanciaYo = indexYo1-indexYo;
+            int distanciaXo = longitudP - (indexXo -1);
             string mFormPend = rectaPend.Substring(indexMp1, distancia);
-           
-            
-            
+            float xo = float.Parse(rectaPend.Substring(indexXo, distanciaXo));
+            float yo = float.Parse(rectaPend.Substring(indexYo, distanciaYo));
             //Aquí se unen todas 
             string formaCambiada ="y=";
             return formaCambiada = formaCambiada+mFormPend;
@@ -129,16 +139,16 @@ namespace Lab_2_Sz
                     }
                     else 
                     {
-                        resulNum = interseccion(m1, m2, b1, b2);
+                        resulNumX = interseccionX(m1, m2, b1, b2);
                         bool perpend = (m1 * m2 == -1);
-
+                        resulNumY = interseccionY(m1, b1, resulNumX);
                         if (perpend)
                         {
-                            resultado = "Las rectas son perpendiculares y se intersectan en x: " + resulNum;
+                            resultado = "Las rectas son perpendiculares y se intersectan en x: " + resulNumX + " y en y: " + resulNumY; 
                         }
                         else
                         {
-                            resultado = "Las rectas se intersectan en x: " + resulNum;
+                            resultado = "Las rectas se intersectan en x: " + resulNumX + " y en y: " +resulNumY;
                         }
                     }
                     
@@ -272,6 +282,11 @@ namespace Lab_2_Sz
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
