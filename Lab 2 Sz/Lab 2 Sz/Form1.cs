@@ -130,17 +130,39 @@ namespace Lab_2_Sz
                         int indexM1 = rectaIng1.IndexOf("=") + 1;
                         int indexX1 = rectaIng1.IndexOf("x")-1;
                         int indexMas1 = rectaIng1.IndexOf("+");
-                        String pendString1 = pendienteString(indexM1, indexX1, rectaIng1);
-                        string intercepString1 = interceptoString(indexMas1, longitud1+1, rectaIng1);
+                        string pendString1 ;
+                        string intercepString1 ;
+                        
+                        if (rectaIng1 == "y=x")
+                        {
+                            pendString1 = "1";
+                            intercepString1 = "0";
+                        }
+                        else
+                        {
+                             pendString1 = pendienteString(indexM1, indexX1, rectaIng1);
+                             intercepString1 = interceptoString(indexMas1, longitud1 + 1, rectaIng1);
+                        }
                         m1 = float.Parse(pendString1);
                         b1 = float.Parse(intercepString1);
+                        string pendString2;
+                        string intercepString2;
 
                         int longitud2 = rectaIng2.Length;
                         int indexM2 = rectaIng2.IndexOf("=") + 1;
                         int indexX2 = rectaIng2.IndexOf("x") - 1;
                         int indexMas2 = rectaIng2.IndexOf("+");
-                        string pendString2 = pendienteString(indexM2, indexX2, rectaIng2);
-                        string intercepString2 = interceptoString(indexMas2, longitud2, rectaIng2);
+                        if (rectaIng2 == "y=x")
+                        {
+                            pendString2 = "1";
+                            intercepString2 = "0";
+                        }
+                        else
+                        {
+                             pendString2 = pendienteString(indexM2, indexX2, rectaIng2);
+                             intercepString2 = interceptoString(indexMas2, longitud2, rectaIng2);
+                        }
+
                         m2 = float.Parse(pendString2);
                         b2 = float.Parse(intercepString2);
 
