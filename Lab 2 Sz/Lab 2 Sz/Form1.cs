@@ -14,7 +14,7 @@ namespace Lab_2_Sz
 {
     public partial class Form1 : Form
     {
-        
+        //creamos las variables y las inicializamos 
         string rectaIng1 = "y=mx+b";
         string rectaIng2 = "y=mx+b";
         string rectaPIng1 = "y=mx+b";
@@ -28,7 +28,7 @@ namespace Lab_2_Sz
         double resulNumY = -1111111111;
 
         
-
+        //funcion para hallar m 
         public string pendienteString(int indexMRec, int indexXRec, string rectaIng)
         {
             int recorrido = 0;
@@ -36,6 +36,7 @@ namespace Lab_2_Sz
             string pendienteString = rectaIng.Substring(indexMRec, recorrido);
             return pendienteString;
         }
+        //funcion para hallar b
         public string interceptoString(int indexMasRec, int length, string rectaIng)
         {
             int recorrido2 = length - indexMasRec;
@@ -44,15 +45,17 @@ namespace Lab_2_Sz
             string intercepString = rectaIng.Substring(indexMasRec,recorrido2);
            return intercepString;
         }
-
+        //funcion para hallar la coordenada x de la intersección
         public double interseccionX(float m1,float m2,float b1, float b2)
         {
             return (b2-b1)/(m1-m2);
         }
+        //funcion para hallar la coordenada y de la intersección
         public double interseccionY(float m1,float b1, double interseccionX)
         {
             return (m1 * interseccionX) + b1;
         }
+        //funcion para trannsformar de la forma y-yo=m(x-x0) a la forma y=mx+b
         private string convertForma(string rectaPend)
         {
             int longitudP = rectaPend.Length; 
@@ -79,11 +82,12 @@ namespace Lab_2_Sz
         {
             InitializeComponent();
         }
-
+        //texto predeterminado para cuando inicie el codigo y cuando los label esten vacios
         string txtPredet1 = "Ingresa tu primera recta";
         string txtPredet2 = "Ingresa tu segunda recta";
         private void opcionEleg(object sender, EventArgs e)
         {
+            //En caso de escoger la forma base
             if (opcion.SelectedItem.ToString() == "y = mx+b")
             {
                 // Mostrar los elementos Label para "m" y "b"
@@ -96,6 +100,7 @@ namespace Lab_2_Sz
 
                                
             }
+            //En caso de haber escogido la forma punto pendiente
             else if (opcion.SelectedItem.ToString() == "y-yo = m(x-xo)")
             {
                 // Mostrar los elementos Label para "m" y "b"
@@ -107,12 +112,12 @@ namespace Lab_2_Sz
             }
         }
        
-
+        //evento cuando el usuario presione el boton de obtener en el frame
         private void btnObtener_Click(object sender, EventArgs e)
         {
             if (opcion.SelectedItem.ToString() == "y = mx+b")
             {
-
+                //Si el usuario digitó almenos un valor en el label 
                 if (fRecta1.Text != txtPredet1 && fRecta2.Text != txtPredet2)
                 {
                     string resultado = "no entendi marce";
@@ -132,7 +137,7 @@ namespace Lab_2_Sz
                         int indexMas1 = rectaIng1.IndexOf("+");
                         string pendString1 ;
                         string intercepString1 ;
-                        
+                        // Comprobamos si la ecuación de la primera recta es "y=x"
                         if (rectaIng1 == "y=x")
                         {
                             pendString1 = "1";
@@ -140,14 +145,17 @@ namespace Lab_2_Sz
                         }
                         else
                         {
-                             pendString1 = pendienteString(indexM1, indexX1, rectaIng1);
+                            // Calculamos la pendiente y la intersección de la primera recta utilizando funciones externas
+                            pendString1 = pendienteString(indexM1, indexX1, rectaIng1);
                              intercepString1 = interceptoString(indexMas1, longitud1 + 1, rectaIng1);
                         }
+                        // Convertimos las cadenas a números flotantes para su uso posterior
                         m1 = float.Parse(pendString1);
                         b1 = float.Parse(intercepString1);
                         string pendString2;
                         string intercepString2;
 
+                        // Calculamos la longitud y los índices necesarios para la segunda recta
                         int longitud2 = rectaIng2.Length;
                         int indexM2 = rectaIng2.IndexOf("=") + 1;
                         int indexX2 = rectaIng2.IndexOf("x") - 1;
@@ -165,15 +173,17 @@ namespace Lab_2_Sz
 
                         m2 = float.Parse(pendString2);
                         b2 = float.Parse(intercepString2);
-
+                        // Comprobamos si las rectas son paralelas
                         if (m2 == m1)
                         {
                             resultado = "las rectas no se intersectan, ¡son paralelas!";
                         }
                         else
                         {
+                            // Calculamos la intersección en x utilizando la función externa
                             resulNumX = interseccionX(m1, m2, b1, b2);
                             bool perpend = (m1 * m2 == -1);
+                            // Calculamos la intersección en y utilizando la función externa
                             resulNumY = interseccionY(m1, b1, resulNumX);
                             if (perpend)
                             {
@@ -329,25 +339,6 @@ namespace Lab_2_Sz
                 fPuntoPend2.Text = txtPredet2;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
