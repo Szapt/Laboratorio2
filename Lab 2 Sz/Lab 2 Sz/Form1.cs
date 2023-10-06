@@ -48,6 +48,19 @@ namespace Lab_2_Sz
         {
             return (b2-b1)/(m1-m2);
         }
+        public string convertForma(string rectaPend)
+        {
+            int indexMp1 = rectaPend.IndexOf("=")+ 1;
+            int indexXp1 = rectaPend.IndexOf("x")-2;
+            int distancia = indexXp1 - indexMp1;
+            string mFormPend = rectaPend.Substring(indexMp1, distancia);
+           
+            
+            
+            //Aquí se unen todas 
+            string formaCambiada ="y=";
+            return formaCambiada = formaCambiada+mFormPend;
+        }
         public Form1()
         {
             InitializeComponent();
