@@ -32,7 +32,7 @@ namespace Lab_2_Sz
         public string pendienteString(int indexMRec, int indexXRec, string rectaIng)
         {
             int recorrido = 0;
-            recorrido = indexXRec - indexMRec + 1;
+            recorrido = indexXRec - indexMRec+1 ;
             string pendienteString = rectaIng.Substring(indexMRec, recorrido);
             return pendienteString;
         }
@@ -53,23 +53,27 @@ namespace Lab_2_Sz
         {
             return (m1 * interseccionX) + b1;
         }
-        public string convertForma(string rectaPend)
+        private string convertForma(string rectaPend)
         {
             int longitudP = rectaPend.Length; 
             int indexMp1 = rectaPend.IndexOf("=")+ 1;
-            int indexXp1 = rectaPend.IndexOf("x")-2;
+            int indexXp1 = rectaPend.IndexOf("x")-1;
             int indexXo = rectaPend.IndexOf("x") + 1;
-            int indexYo = rectaPend.IndexOf("y") + 1;
+            int indexYo = rectaPend.IndexOf("y")+1;
             int indexYo1 = rectaPend.IndexOf("=") - 1;
             int distancia = indexXp1 - indexMp1;
-            int distanciaYo = indexYo1-indexYo;
-            int distanciaXo = longitudP - (indexXo -1);
+            int distanciaYo = indexYo1-indexYo+1;
+            int distanciaXo = longitudP - indexXo -1;
             string mFormPend = rectaPend.Substring(indexMp1, distancia);
+            float mFormPendNum = float.Parse(mFormPend);
             float xo = float.Parse(rectaPend.Substring(indexXo, distanciaXo));
             float yo = float.Parse(rectaPend.Substring(indexYo, distanciaYo));
+            float b = (mFormPendNum * xo) + (yo * -1);
+            string bString = Convert.ToString(b); 
             //Aquí se unen todas 
             string formaCambiada ="y=";
-            return formaCambiada = formaCambiada+mFormPend;
+            formaCambiada = formaCambiada + mFormPend + "x"+bString;
+            return formaCambiada;
         }
         public Form1()
         {
@@ -106,62 +110,121 @@ namespace Lab_2_Sz
 
         private void btnObtener_Click(object sender, EventArgs e)
         {
-            if(opcion.SelectedItem.ToString() == "y = mx+b")
+            if (opcion.SelectedItem.ToString() == "y = mx+b")
             {
+
                 if (fRecta1.Text != txtPredet1 && fRecta2.Text != txtPredet2)
                 {
-                    rectaIng1 = fRecta1.Text;
-                    rectaIng2 = fRecta2.Text;
-                    rectaPIng1 = fPuntoPend1.Text;
-                    rectaPIng2 = fPuntoPend2.Text;
-
-                    int longitud1 = rectaIng1.Length;
-                    int indexM1 = rectaIng1.IndexOf("=") + 1;
-                    int indexX1 = rectaIng1.IndexOf("x") - 1;
-                    int indexMas1 = rectaIng1.IndexOf("+");
-                    String pendString1 = pendienteString(indexM1, indexX1, rectaIng1);
-                    string intercepString1 = interceptoString(indexMas1, longitud1, rectaIng1);
-                     m1 = float.Parse(pendString1);
-                     b1 = float.Parse(intercepString1);
-
-                    int longitud2 = rectaIng2.Length;
-                    int indexM2 = rectaIng2.IndexOf("=") + 1;
-                    int indexX2 = rectaIng2.IndexOf("x") - 1;
-                    int indexMas2 = rectaIng2.IndexOf("+");
-                    string pendString2 = pendienteString(indexM2, indexX2, rectaIng2);
-                    string intercepString2 = interceptoString(indexMas2, longitud2, rectaIng2);
-                     m2 = float.Parse(pendString2);
-                     b2 = float.Parse(intercepString2);
                     string resultado = "no entendi marce";
-                    if (m2 == m1)
+                    if (fRecta1.Text == "y=x" && fRecta2.Text == "y=x")
                     {
-                        resultado = "las rectas no se intersectan, ¡son paralelas!";
+                        resultado = "Son la misma recta";
                     }
-                    else 
+                    else
                     {
-                        resulNumX = interseccionX(m1, m2, b1, b2);
-                        bool perpend = (m1 * m2 == -1);
-                        resulNumY = interseccionY(m1, b1, resulNumX);
-                        if (perpend)
+                        rectaIng1 = fRecta1.Text;
+                        rectaIng2 = fRecta2.Text;
+
+                        
+                        int longitud1 = rectaIng1.Length-1;
+                        int indexM1 = rectaIng1.IndexOf("=") + 1;
+                        int indexX1 = rectaIng1.IndexOf("x")-1;
+                        int indexMas1 = rectaIng1.IndexOf("+");
+                        String pendString1 = pendienteString(indexM1, indexX1, rectaIng1);
+                        string intercepString1 = interceptoString(indexMas1, longitud1+1, rectaIng1);
+                        m1 = float.Parse(pendString1);
+                        b1 = float.Parse(intercepString1);
+
+                        int longitud2 = rectaIng2.Length;
+                        int indexM2 = rectaIng2.IndexOf("=") + 1;
+                        int indexX2 = rectaIng2.IndexOf("x") - 1;
+                        int indexMas2 = rectaIng2.IndexOf("+");
+                        string pendString2 = pendienteString(indexM2, indexX2, rectaIng2);
+                        string intercepString2 = interceptoString(indexMas2, longitud2, rectaIng2);
+                        m2 = float.Parse(pendString2);
+                        b2 = float.Parse(intercepString2);
+
+                        if (m2 == m1)
                         {
-                            resultado = "Las rectas son perpendiculares y se intersectan en x: " + resulNumX + " y en y: " + resulNumY; 
+                            resultado = "las rectas no se intersectan, ¡son paralelas!";
                         }
                         else
                         {
-                            resultado = "Las rectas se intersectan en x: " + resulNumX + " y en y: " +resulNumY;
+                            resulNumX = interseccionX(m1, m2, b1, b2);
+                            bool perpend = (m1 * m2 == -1);
+                            resulNumY = interseccionY(m1, b1, resulNumX);
+                            if (perpend)
+                            {
+                                resultado = "Las rectas son perpendiculares y se intersectan en x: " + resulNumX + " y en y: " + resulNumY;
+                            }
+                            else
+                            {
+                                resultado = "Las rectas se intersectan en x: " + resulNumX + " y en y: " + resulNumY;
+                            }
+                            //Esto es solo de prueba, regresa cambiarlo a el resul luego
+                            label1.Text = resultado;
                         }
                     }
-                    
-
-                    //Esto es solo de prueba, regresa cambiarlo a el resul luego
                     label1.Text = resultado;
+
+
+
+
+
                 }
-               
+
 
             }
             else if (opcion.SelectedItem.ToString() == "y-yo = m(x-xo)")
             {
+                string resultado = "Nada";
+                rectaPIng1 = fPuntoPend1.Text;
+                rectaPIng2 = fPuntoPend2.Text;
 
+                string formCambiada1 = convertForma(rectaPIng1);
+                string formCambiada2 = convertForma(rectaPIng2);
+
+                //Aqui es simplemente volver a aplicar la lógica que empleamos para y=mx+b
+                int longitudP1 = rectaPIng1.Length+1;
+                int indexPM1 = rectaPIng1.IndexOf("=")+1;
+                int indexPX1 = rectaPIng1.IndexOf("x") - 2;
+                int indexPMas1 = rectaPIng1.IndexOf("+");
+                string pendString1 = pendienteString(indexPM1, indexPX1, rectaPIng1);
+                string intercepString1 = interceptoString(indexPMas1, longitudP1-2, rectaPIng1);
+                m1 = float.Parse(pendString1);
+                b1 = float.Parse(intercepString1);
+
+                int longitudP2 = rectaIng2.Length+1;
+                int indexPM2 = rectaPIng2.IndexOf("=") + 1;
+                int indexPX2 = rectaPIng2.IndexOf("x") - 2;
+                int indexPMas2 = rectaIng2.IndexOf("+");
+                string pendString2 = pendienteString(indexPM2, indexPX2, rectaPIng2);
+                string intercepString2 = interceptoString(indexPMas2, longitudP2-2, rectaPIng2);
+                m2 = float.Parse(pendString2);
+                b2 = float.Parse(intercepString2);
+
+                if (m2 == m1)
+                {
+                    resultado = "las rectas no se intersectan, ¡son paralelas!";
+                }
+                else
+                {
+                    resulNumX = interseccionX(m1, m2, b1, b2);
+                    string resulStringX = Convert.ToString(resulNumX);
+                    bool perpend = (m1 * m2 == -1);
+                    resulNumY = interseccionY(m1, b1, resulNumX);
+                    string resulStringY = Convert.ToString(resulNumY);
+                    if (perpend)
+                    {
+                        resultado = "Las rectas son perpendiculares y se intersectan en x: " + resulStringX + " y en y: " + resulStringY;
+                    }
+                    else
+                    {
+                        resultado = "Las rectas se intersectan en x: " + resulStringX + " y en y: " + resulStringY;
+                    }
+                    
+                }
+                label1.Text = resultado;
             }
             else
             {
